@@ -15,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.amplify.R
+import com.example.loginsignup_jetpackcompose.components.CheckboxComponent
 import com.example.loginsignup_jetpackcompose.components.HeadingTextComponent
 import com.example.loginsignup_jetpackcompose.components.MyTextField
 import com.example.loginsignup_jetpackcompose.components.NormalTextComponent
@@ -36,11 +37,11 @@ fun SignUpScreen() {
             Spacer(modifier = Modifier.height(20.dp))
             MyTextField(
                 labelValue = stringResource(id = R.string.first_name),
-                painterResource(id = R.drawable.ic_profile_filled)
+                painterResource(id = R.drawable.ic_profile)
             )
             MyTextField(
                 labelValue = stringResource(id = R.string.last_name),
-                painterResource = painterResource(id = R.drawable.ic_profile_filled)
+                painterResource = painterResource(id = R.drawable.ic_profile)
             )
             MyTextField(
                 labelValue = stringResource(id = R.string.email),
@@ -50,6 +51,9 @@ fun SignUpScreen() {
                 labelValue = stringResource(id = R.string.password),
                 painterResource = painterResource(id = R.drawable.ic_lock)
             )
+
+            CheckboxComponent(value = stringResource(id = R.string.terms_and_conditions))
+
         }
     }
 }

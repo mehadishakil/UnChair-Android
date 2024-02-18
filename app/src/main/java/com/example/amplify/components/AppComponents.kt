@@ -1,9 +1,14 @@
 package com.example.loginsignup_jetpackcompose.components
 
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -14,11 +19,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role.Companion.Checkbox
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -97,7 +103,6 @@ fun MyTextField(labelValue: String, painterResource: Painter) {
 }
 
 
-
 @Composable
 fun PasswordTextField(labelValue: String, painterResource: Painter) {
     var password by remember {
@@ -126,30 +131,53 @@ fun PasswordTextField(labelValue: String, painterResource: Painter) {
             Icon(painter = painterResource, contentDescription = "")
         },
         trailingIcon = {
-            val iconImage = if(passwordVisible.value){
+            val iconImage = if (passwordVisible.value) {
                 Icons.Filled.Visibility
             } else {
                 Icons.Filled.VisibilityOff
             }
 
-            var description = if(passwordVisible.value){
+            var description = if (passwordVisible.value) {
                 "Hide password"
-            }else {
+            } else {
                 "Show password"
             }
 
-            IconButton(onClick = {passwordVisible.value = !passwordVisible.value}){
+            IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
                 Icon(imageVector = iconImage, contentDescription = "")
             }
 
 
         },
 
-        visualTransformation = if(passwordVisible.value) VisualTransformation.None else
+        visualTransformation = if (passwordVisible.value) VisualTransformation.None else
             PasswordVisualTransformation()
 
     )
 }
 
+
+@Composable
+fun CheckboxComponent(value: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(56.dp)
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        val checkedState = remember {
+            mutableStateOf(false)
+        }
+
+        Checkbox(
+            checked = checkedState.value,
+            onCheckedChange = { checkedState.value != checkedState.value },
+        )
+
+        NormalTextComponent(value)
+
+    }
+}
 
 
