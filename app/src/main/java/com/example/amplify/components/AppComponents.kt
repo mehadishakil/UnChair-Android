@@ -2,6 +2,7 @@ package com.example.loginsignup_jetpackcompose.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
@@ -68,7 +69,7 @@ fun HeadingTextComponent(value: String) {
         style = TextStyle(
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
-            fontStyle = FontStyle.Normal
+            fontStyle = FontStyle.Normal,
         ),
         color = colorResource(id = R.color.colorText),
         textAlign = TextAlign.Center
@@ -97,10 +98,13 @@ fun MyTextField(labelValue: String, painterResource: Painter) {
         ),
         keyboardOptions = KeyboardOptions.Default,
         leadingIcon = {
-            Icon(painter = painterResource, contentDescription = "")
+            Icon(painter = painterResource, contentDescription = "", Modifier.height(24.dp))
+            // Adjust the height here, e.g., Modifier.height(24.dp)
         }
+
     )
 }
+
 
 
 @Composable
@@ -128,7 +132,7 @@ fun PasswordTextField(labelValue: String, painterResource: Painter) {
         ),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         leadingIcon = {
-            Icon(painter = painterResource, contentDescription = "")
+            Icon(painter = painterResource, contentDescription = "", Modifier.height(24.dp))
         },
         trailingIcon = {
             val iconImage = if (passwordVisible.value) {
@@ -144,7 +148,7 @@ fun PasswordTextField(labelValue: String, painterResource: Painter) {
             }
 
             IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
-                Icon(imageVector = iconImage, contentDescription = "")
+                Icon(imageVector = iconImage, contentDescription = "", Modifier.height(20.dp))
             }
 
 
