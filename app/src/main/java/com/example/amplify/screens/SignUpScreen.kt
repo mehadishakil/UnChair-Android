@@ -54,6 +54,9 @@ fun SignUpScreen() {
 
             CheckboxComponent(value = stringResource(id = R.string.terms_and_conditions))
 
+
+            // this is just a comment
+            
         }
     }
 }
