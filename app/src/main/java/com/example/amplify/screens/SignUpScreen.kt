@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -52,7 +54,8 @@ fun SignUpScreen() {
                 painterResource = painterResource(id = R.drawable.ic_lock)
             )
 
-            CheckboxComponent(value = stringResource(id = R.string.terms_and_conditions))
+            val checkedState = remember { mutableStateOf(false) }
+            CheckboxComponent(value = stringResource(id = R.string.terms_and_conditions), checkedState = checkedState)
 
         }
     }
