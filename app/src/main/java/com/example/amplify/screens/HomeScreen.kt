@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
@@ -64,36 +65,41 @@ import kotlin.math.sin
 
 @Composable
 fun HomeScreen() {
-//    Column(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .background(Color.White)
-//    ) {
-//        Spacer(modifier = Modifier.height(20.dp))
-//        SedentaryTime()
-//
-//    }
-
-
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(darkGray),
-        contentAlignment = Alignment.Center
-    ){
-        CustomCircularProgressIndicator(
+            .background(Color.White),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(modifier = Modifier.height(20.dp))
+        SedentaryTime()
+
+        Box(
             modifier = Modifier
-                .size(250.dp)
+                .height(250.dp)
+                .width(250.dp)
+                .padding(16.dp)
                 .background(darkGray),
-            initalValue = 50,
-            primaryColor = orange,
-            secondaryColor = gray,
-            circleRadius = 230f,
-            onPositionChange = {position ->
-                 // do something with this position value
-            }
-        )
+            contentAlignment = Alignment.Center
+        ){
+            CustomCircularProgressIndicator(
+                modifier = Modifier
+                    .size(250.dp)
+                    .background(darkGray),
+                initalValue = 50,
+                primaryColor = orange,
+                secondaryColor = gray,
+                circleRadius = 230f,
+                onPositionChange = {position ->
+                    // do something with this position value
+                }
+            )
+        }
+
     }
+
+
+
 
 }
 
@@ -405,16 +411,7 @@ fun CustomCircularProgressIndicator(
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
-    CustomCircularProgressIndicator(
-        modifier = Modifier
-            .size(250.dp)
-            .background(darkGray),
-        initalValue = 30,
-        primaryColor = orange,
-        secondaryColor = darkGray,
-        circleRadius = 230f,
-        onPositionChange = {
+    HomeScreen()
 
-        }
-    )
+
 }
