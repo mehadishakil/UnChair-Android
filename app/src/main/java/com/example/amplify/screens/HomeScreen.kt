@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -49,6 +50,8 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
+import co.yml.charts.axis.AxisData
+import co.yml.charts.common.model.Point
 import com.example.amplify.ui.theme.darkGray
 import com.example.amplify.ui.theme.gray
 import com.example.amplify.ui.theme.orange
@@ -406,6 +409,31 @@ fun CustomCircularProgressIndicator(
     }
 
 }
+
+
+@Composable
+fun LineChartScreen(){
+    val steps = 5
+    val pointsData = listOf(
+        Point(0f, 40f),
+        Point(1f, 90f),
+        Point(2f, 0f),
+        Point(3f, 60f),
+        Point(4f, 10f),
+    )
+
+    val xAxisData = AxisData.Builder()
+        .axisStepSize(100.dp)
+        .backgroundColor(Color.Transparent)
+        .steps(pointsData.size - 1)
+        .labelData { i -> i.toString() }
+        .labelAndAxisLinePadding(15.dp)
+        .axisLineColor(MaterialTheme.colorScheme.tertiary)
+        .axisLabelColor(MaterialTheme.colorScheme.tertiary)
+        .build()
+}
+
+
 
 
 @Preview(showBackground = true)
