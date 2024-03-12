@@ -60,7 +60,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import co.yml.charts.axis.AxisData
 import co.yml.charts.common.model.Point
-import com.example.amplify.components.WeeklyCalender
+import com.example.amplify.components.weeklyCalendar.CalendarView
 import com.example.amplify.ui.theme.darkGray
 import com.example.amplify.ui.theme.gray
 import com.example.amplify.ui.theme.orange
@@ -415,30 +415,10 @@ fun LineChartScreen() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
-    WeeklyCalender(
+    CalendarView(
         modifier = Modifier.padding(16.dp)
     )
 }
