@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.amplify"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -71,6 +71,9 @@ dependencies {
 
     // YChart
     implementation("co.yml:ycharts:2.1.0")
+
+    // horizontal weekly calender
+    implementation ("androidx.compose.material:material-icons-extended:1.2.0")
 
 
 }

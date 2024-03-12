@@ -17,9 +17,18 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChevronLeft
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,9 +58,9 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.drawText
 import co.yml.charts.axis.AxisData
 import co.yml.charts.common.model.Point
+import com.example.amplify.components.WeeklyCalender
 import com.example.amplify.ui.theme.darkGray
 import com.example.amplify.ui.theme.gray
 import com.example.amplify.ui.theme.orange
@@ -84,7 +93,7 @@ fun HomeScreen() {
                 .padding(16.dp)
                 .background(darkGray),
             contentAlignment = Alignment.Center
-        ){
+        ) {
             CustomCircularProgressIndicator(
                 modifier = Modifier
                     .size(250.dp)
@@ -93,17 +102,12 @@ fun HomeScreen() {
                 primaryColor = orange,
                 secondaryColor = gray,
                 circleRadius = 230f,
-                onPositionChange = {position ->
+                onPositionChange = { position ->
                     // do something with this position value
                 }
             )
         }
-
     }
-
-
-
-
 }
 
 
@@ -117,7 +121,6 @@ fun SedentaryTime() {
             .background(Color.White),
         elevation = CardDefaults.elevatedCardElevation(),
         colors = CardDefaults.cardColors(Color.White)
-
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),
@@ -133,7 +136,6 @@ fun SedentaryTime() {
                 painter = painterResource(id = R.drawable.ic_hourglass),
                 contentDescription = "Hourglass Icon"
             )
-
             Column(
                 modifier = Modifier
                     .padding(start = 8.dp)
@@ -247,23 +249,18 @@ fun CustomCircularProgressIndicator(
     var circleCenter by remember {
         mutableStateOf(Offset.Zero)
     }
-
     var positionValue by remember {
         mutableStateOf(initalValue)
     }
-
     var changeAngle by remember {
         mutableStateOf(0f)
     }
-
     var dragStartedAngle by remember {
         mutableStateOf(0f)
     }
-
     var oldPositionValue by remember {
         mutableStateOf(initalValue)
     }
-
     Box(
         modifier = modifier
     ) {
@@ -284,21 +281,15 @@ fun CustomCircularProgressIndicator(
                                 x = circleCenter.y - change.position.y,
                                 y = circleCenter.x - change.position.x
                             ) * (180 / Math.PI).toFloat()
-
                             touchAngle = (touchAngle + 180f).mod(360f)
-
                             val currentAngle = oldPositionValue * 360f / (maxValue - minValue)
                             changeAngle = touchAngle - currentAngle
-
                             val lowerThreshold = currentAngle - (360f / (maxValue - minValue) * 5)
                             val higherThreshold = currentAngle + (360f / (maxValue - minValue) * 5)
-
                             if (dragStartedAngle in lowerThreshold..higherThreshold) {
                                 positionValue =
                                     (oldPositionValue + (changeAngle / (360f / (maxValue - minValue))).roundToInt())
                             }
-
-
                         },
                         onDragEnd = {
                             oldPositionValue = positionValue
@@ -311,7 +302,6 @@ fun CustomCircularProgressIndicator(
             val height = size.height
             val circleThickness = width / 25f
             circleCenter = Offset(x = width / 2f, y = height / 2f)
-
             drawCircle(
                 brush = Brush.radialGradient(
                     listOf(
@@ -322,8 +312,6 @@ fun CustomCircularProgressIndicator(
                 radius = circleRadius,
                 center = circleCenter
             )
-
-
             drawCircle(
                 style = Stroke(
                     width = circleThickness,
@@ -332,9 +320,6 @@ fun CustomCircularProgressIndicator(
                 radius = circleRadius,
                 center = circleCenter
             )
-
-
-
             drawArc(
                 color = primaryColor,
                 startAngle = 90f,
@@ -357,24 +342,22 @@ fun CustomCircularProgressIndicator(
             val outerRadius = circleRadius + circleThickness / 2f
             val gap = 15f
             for (i in 0..(maxValue - minValue)) {
-                val color = if (i < positionValue - minValue) primaryColor else primaryColor.copy(alpha = 0.3f)
+                val color =
+                    if (i < positionValue - minValue) primaryColor else primaryColor.copy(alpha = 0.3f)
                 val angleInDegree = i * 360f / (maxValue - minValue).toFloat()
                 val angleInRad = angleInDegree * Math.PI / 180f + Math.PI / 2f
 
                 val yGapAdjustment = cos(angleInDegree * Math.PI / 180f) * gap
                 val xGapAdjustment = -sin(angleInDegree * Math.PI / 180f) * gap
 
-
                 val start = Offset(
                     x = (outerRadius * cos(angleInRad) + circleCenter.x + xGapAdjustment).toFloat(),
                     y = (outerRadius * sin(angleInRad) + circleCenter.y + yGapAdjustment).toFloat()
                 )
-
                 val end = Offset(
                     x = (outerRadius * cos(angleInRad) + circleCenter.x + xGapAdjustment).toFloat(),
                     y = (outerRadius * sin(angleInRad) + circleThickness + circleCenter.y + yGapAdjustment).toFloat()
                 )
-
                 rotate(
                     angleInDegree,
                     pivot = start
@@ -393,7 +376,7 @@ fun CustomCircularProgressIndicator(
                     drawText(
                         "$positionValue %",
                         circleCenter.x,
-                        circleCenter.y+45.dp.toPx()/3f,
+                        circleCenter.y + 45.dp.toPx() / 3f,
                         Paint().apply {
                             textSize = 38.dp.toPx()
                             textAlign = Paint.Align.CENTER
@@ -403,16 +386,13 @@ fun CustomCircularProgressIndicator(
                     )
                 }
             }
-
-
         }
     }
-
 }
 
 
 @Composable
-fun LineChartScreen(){
+fun LineChartScreen() {
     val steps = 5
     val pointsData = listOf(
         Point(0f, 40f),
@@ -436,10 +416,29 @@ fun LineChartScreen(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen()
-
-
+    WeeklyCalender(
+        modifier = Modifier.padding(16.dp)
+    )
 }
