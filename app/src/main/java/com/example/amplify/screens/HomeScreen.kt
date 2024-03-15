@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.example.amplify.components.CustomCircularProgressIndicator
 import com.example.amplify.components.SedentaryTime
 import com.example.amplify.components.LineChartScreen
+import com.example.amplify.components.sleepAnalytics.SleepAnalytics
 import com.example.amplify.ui.theme.darkGray
 import com.example.amplify.ui.theme.gray
 import com.example.amplify.ui.theme.orange
@@ -84,6 +85,7 @@ fun HomeScreenPreview() {
 //        }
 //    )
 
-    LineChartScreen()
+ //   LineChartScreen()
+    SleepAnalytics()
 
 }
