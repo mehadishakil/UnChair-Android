@@ -22,12 +22,16 @@ import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.round
+import kotlin.text.Typography.times
+
 
 @Composable
 fun BarGraph(
@@ -51,18 +55,17 @@ fun BarGraph(
     val width = configuration.screenWidthDp.dp
 
     // bottom height of the X-Axis Scale
-    val xAxisScaleHeight = 40.dp
+    val xAxisScaleHeight = 20.dp
 
     val yAxisScaleSpacing by remember {
         mutableStateOf(100f)
     }
     val yAxisTextWidth by remember {
-        mutableStateOf(100.dp)
+        mutableStateOf(0.dp)
     }
 
     // bar shape
-    val barShap =
-        when (roundType) {
+    val barShap =  when (roundType) {
             BarType.CIRCULAR_TYPE -> CircleShape
             BarType.TOP_CURVED -> RoundedCornerShape(topStart = 5.dp, topEnd = 5.dp)
         }
@@ -73,7 +76,7 @@ fun BarGraph(
         Paint().apply {
             color = Color.Black.hashCode()
             textAlign = Paint.Align.CENTER
-            textSize = density.run { 10.sp.toPx() }
+            textSize = density.run { 8.sp.toPx() }
         }
     }
 
@@ -82,47 +85,48 @@ fun BarGraph(
     // for dotted line effect
     val pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
     // height of vertical line over x-axis scale connecting x-axis horizontal line
-    val lineHeightXAxis = 4.dp
+    val lineHeightXAxis = 0.dp
     // height of horizontal line over x-axis scale
     val horizontalLineHeight = 1.dp
 
     Box(
         modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.TopStart
     ) {
 
         // y-axis scale and horizontal dotted lines on graph indicating y-axis scale
         Column(
             modifier = Modifier
-                .padding(top = xAxisScaleHeight, end = 3.dp)
+                .fillMaxWidth()
                 .height(height)
-                .fillMaxWidth(),
-            horizontalAlignment = CenterHorizontally
+
+//                .padding(top = xAxisScaleHeight, end = 0.dp)
+//                .height(height)
+//                .fillMaxWidth(),
         ) {
 
-            Canvas(modifier = Modifier.padding(bottom = 10.dp).fillMaxSize()) {
+            Canvas(modifier = Modifier.fillMaxSize()) {
 
                 // Y-Axis Scale Text
-                val yAxisScaleText = (barData.max()) / 3f
-                (0..3).forEach { i ->
+                val yAxisScaleText = (barData.max()) / 5f
+                (0..5).forEach { i ->
                     drawContext.canvas.nativeCanvas.apply {
                         drawText(
                             round(barData.min() + yAxisScaleText * i).toString(),
                             30f,
-                            size.height - yAxisScaleSpacing - i * size.height / 3f,
+                            size.height  - yAxisScaleSpacing - (i-2) * size.height / 5f,
                             textPaint
                         )
                     }
-                    yCoordinates.add(size.height - yAxisScaleSpacing - i * size.height / 3f)
+                    yCoordinates.add(size.height - yAxisScaleSpacing - (i-2) * size.height / 5f)
                 }
 
                 // horizontal dotted lines on graph indicating y-axis scale
-                (1..3).forEach {
+                (1..5).forEach {
                     drawLine(
-                        start = Offset(x = yAxisScaleSpacing +30f, y = yCoordinates[it]),
+                        start = Offset(x = yAxisScaleSpacing-15f, y = yCoordinates[it]),
                         end = Offset(x= size.width, y = yCoordinates[it]),
                         color = Color.Gray,
-                        strokeWidth = 5f,
+                        strokeWidth = 1f,
                         pathEffect = pathEffect
                     )
                 }
@@ -134,7 +138,7 @@ fun BarGraph(
         // Graph with Bar Graph and X-Axis Scale
         Box(
             modifier = Modifier
-                .padding(start = 50.dp)
+                .padding(start = 30.dp)
                 .width(width - yAxisTextWidth)
                 .height(height + xAxisScaleHeight),
             contentAlignment = Alignment.BottomCenter
@@ -173,10 +177,10 @@ fun BarGraph(
                         // Each Graph
                         Box(
                             modifier = Modifier
-                                .padding(bottom = 5.dp)
+                                .padding(bottom = 3.dp)
                                 .clip(barShap)
                                 .width(barWidth)
-                                .height(height - 10.dp)
+                                .height(height - 0.dp)
                                 .background(Color.Transparent),
                             contentAlignment = BottomCenter
                         ) {
@@ -197,27 +201,28 @@ fun BarGraph(
                             horizontalAlignment = CenterHorizontally
                         ) {
 
-                            // small vertical line joining the horizontal x-axis line
-                            Box(
-                                modifier = Modifier
-                                    .clip(
-                                        RoundedCornerShape(
-                                            bottomStart = 2.dp,
-                                            bottomEnd = 2.dp
-                                        )
-                                    )
-                                    .width(horizontalLineHeight)
-                                    .height(lineHeightXAxis)
-                                    .background(color = Color.Gray)
-                            )
+//                            // small vertical line joining the horizontal x-axis line
+//                            Box(
+//                                modifier = Modifier
+//                                    .clip(
+//                                        RoundedCornerShape(
+//                                            bottomStart = 2.dp,
+//                                            bottomEnd = 2.dp
+//                                        )
+//                                    )
+//                                    .width(horizontalLineHeight)
+//                                    .height(lineHeightXAxis)
+//                                    .background(color = Color.Gray)
+//                            )
+
                             // scale x-axis
                             Text(
-                                modifier = Modifier.padding(bottom = 3.dp),
                                 text = xAxisScaleData[index].toString(),
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Normal,
                                 textAlign = TextAlign.Center,
-                                color = Color.Black
+                                color = Color.Black,
+                                fontFamily = FontFamily.Serif,
                             )
 
                         }
@@ -238,8 +243,8 @@ fun BarGraph(
 
                 Box(
                     modifier = Modifier
-                        .padding(bottom = xAxisScaleHeight + 3.dp)
-                        .clip(RoundedCornerShape(2.dp))
+                        .padding(bottom = 17.dp)
+                        .clip(RoundedCornerShape(0.dp))
                         .fillMaxWidth()
                         .height(horizontalLineHeight)
                         .background(Color.Gray)
@@ -264,8 +269,25 @@ fun BarGraph(
 
 
 
+@Preview(showBackground = true)
+@Composable
+fun BarGraphPreview() {
+    val dataList = mutableListOf(6, 6, 5, 12, 7, 8, 9)
+    val floatValue = mutableListOf<Float>()
+    val datesList = mutableListOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sat")
 
+    dataList.forEachIndexed { index, value ->
+        floatValue.add(index = index, element = value.toFloat() / dataList.max().toFloat())
+    }
 
-
-
-
+    BarGraph(
+        graphBarData = floatValue,
+        xAxisScaleData = datesList,
+        barData_ = dataList,
+        height = 100.dp,
+        roundType = BarType.TOP_CURVED,
+        barWidth = 25.dp,
+        barColor = Color.DarkGray,
+        barArrangement = Arrangement.SpaceBetween
+    )
+}
