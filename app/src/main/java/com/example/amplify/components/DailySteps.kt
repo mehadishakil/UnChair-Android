@@ -17,8 +17,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.amplify.R
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun DailyStepsPreview(){
+    DailySteps(39945)
+}
+
 
 @Composable
 fun DailySteps(steps: Int) {
@@ -33,7 +43,8 @@ fun DailySteps(steps: Int) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp), // Fill the entire card area
+                .padding(top = 12.dp, bottom = 12.dp),
+                // Fill the entire card area
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
@@ -50,9 +61,7 @@ fun DailySteps(steps: Int) {
                 text = "$steps",
                 style = MaterialTheme.typography.displayLarge, // Use h4 for large, bold text
                 color = Color.White,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp), // Adjusted padding
+                fontWeight = FontWeight.Bold, // Adjusted padding
             )
 
             Text(

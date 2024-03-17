@@ -19,6 +19,7 @@ import com.example.amplify.components.CustomCircularProgressIndicator
 import com.example.amplify.components.SedentaryTime
 import com.example.amplify.components.LineChartScreen
 import com.example.amplify.components.sleepAnalytics.SleepAnalytics
+import com.example.amplify.screens.ProfileScreen
 import com.example.amplify.ui.theme.darkGray
 import com.example.amplify.ui.theme.gray
 import com.example.amplify.ui.theme.orange
@@ -26,37 +27,39 @@ import com.example.amplify.ui.theme.orange
 
 @Composable
 fun HomeScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Spacer(modifier = Modifier.height(20.dp))
-        SedentaryTime()
+//    Column(
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .background(Color.White),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Spacer(modifier = Modifier.height(20.dp))
+//        SedentaryTime()
+//
+//        Box(
+//            modifier = Modifier
+//                .height(250.dp)
+//                .width(250.dp)
+//                .padding(16.dp)
+//                .background(darkGray),
+//            contentAlignment = Alignment.Center
+//        ) {
+//            CustomCircularProgressIndicator(
+//                modifier = Modifier
+//                    .size(250.dp)
+//                    .background(darkGray),
+//                initalValue = 50,
+//                primaryColor = orange,
+//                secondaryColor = gray,
+//                circleRadius = 230f,
+//                onPositionChange = { position ->
+//                    // do something with this position value
+//                }
+//            )
+//        }
+//    }
 
-        Box(
-            modifier = Modifier
-                .height(250.dp)
-                .width(250.dp)
-                .padding(16.dp)
-                .background(darkGray),
-            contentAlignment = Alignment.Center
-        ) {
-            CustomCircularProgressIndicator(
-                modifier = Modifier
-                    .size(250.dp)
-                    .background(darkGray),
-                initalValue = 50,
-                primaryColor = orange,
-                secondaryColor = gray,
-                circleRadius = 230f,
-                onPositionChange = { position ->
-                    // do something with this position value
-                }
-            )
-        }
-    }
+    ProfileScreen()
 }
 
 
@@ -86,6 +89,7 @@ fun HomeScreenPreview() {
 //    )
 
  //   LineChartScreen()
-    SleepAnalytics()
+  //  SleepAnalytics()
+    ProfileScreen()
 
 }
