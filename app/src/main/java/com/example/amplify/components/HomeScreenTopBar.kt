@@ -11,8 +11,14 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -73,7 +79,9 @@ fun HomeScreenTopBar() {
 
 
             Column(
-                modifier = Modifier.fillMaxHeight().padding(start = 12.dp, end = 12.dp),
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(start = 12.dp, end = 12.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.Start
             ) {
@@ -96,20 +104,26 @@ fun HomeScreenTopBar() {
             }
         }
 
-        Image(
+//        Image(
+//            modifier = Modifier
+//                .size(40.dp)
+//                .padding(start = 10.dp,  top = 10.dp, bottom = 2.dp, end = 2.dp)
+//                .align(Alignment.Bottom),
+//            alignment = Alignment.Center,
+//            contentScale = ContentScale.Crop,
+//            painter = painterResource(id = R.drawable.ic_notification),
+//            contentDescription = "Sleepy Icon"
+//        )
+
+        IconButton(
+            onClick = { /*TODO*/ },
             modifier = Modifier
-                .size(40.dp)
-                .padding(start = 10.dp,  top = 10.dp, bottom = 2.dp, end = 2.dp)
                 .align(Alignment.Bottom),
-            alignment = Alignment.Center,
-            contentScale = ContentScale.Crop,
-            painter = painterResource(id = R.drawable.ic_notification),
-            contentDescription = "Sleepy Icon"
-        )
+        ) {
+            Icon(Icons.Outlined.Notifications, contentDescription = "Notification Icon")
+        }
 
     }
-
-
 
 }
 
