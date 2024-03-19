@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.amplify.components.DottedLine
 import com.example.amplify.components.ThemeTabBar
 
 
@@ -137,15 +138,8 @@ fun ProfileScreen() {
 
 
 
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(0.dp))
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color.Gray)
-                ){
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
 
-                }
 
 
 
@@ -259,13 +253,7 @@ fun ProfileScreen() {
                     }
                 }
 
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(0.dp))
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color.Gray)
-                )
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
 
 
                 Row(
@@ -307,13 +295,7 @@ fun ProfileScreen() {
                     }
                 }
 
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(0.dp))
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color.Gray)
-                )
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
 
 
                 Row(
@@ -424,13 +406,7 @@ fun ProfileScreen() {
                     }
                 }
 
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(0.dp))
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color.Gray)
-                )
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
 
 
                 Row(
@@ -472,13 +448,7 @@ fun ProfileScreen() {
                     }
                 }
 
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(0.dp))
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color.Gray)
-                )
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
 
 
                 Row(
@@ -521,13 +491,7 @@ fun ProfileScreen() {
                 }
 
 
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(0.dp))
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color.Gray)
-                )
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
 
 
                 Row(
@@ -569,13 +533,7 @@ fun ProfileScreen() {
                     }
                 }
 
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(0.dp))
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(Color.Gray)
-                )
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
 
 
                 Row(
@@ -637,6 +595,173 @@ fun ProfileScreen() {
             .padding(start = 8.dp, end = 8.dp, top = 16.dp)
         ){
             ThemeTabBar()
+        }
+
+
+
+        Text(
+            text = "Settings",
+            Modifier.padding(start = 8.dp, top = 18.dp),
+            color = Color(0xFF565858),
+            fontFamily = FontFamily.SansSerif,
+            fontWeight = FontWeight.Bold,
+            fontSize = 18.sp
+        )
+
+        // Account Information
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp)
+                .padding(start = 8.dp, end = 8.dp, top = 16.dp, bottom = 18.dp),
+            colors = CardDefaults.cardColors(Color.LightGray),
+        ){
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 12.dp, end = 12.dp),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.Start
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text = "Privacy controls",
+                        Modifier
+                            .padding(top = 2.dp)
+                            .align(Alignment.CenterVertically),
+                        color = Color(0xFF565858),
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.Normal,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Image(
+                        modifier = Modifier
+                            .size(20.dp)
+                            .align(Alignment.Bottom),
+                        alignment = Alignment.Center,
+                        contentScale = ContentScale.Crop,
+                        painter = painterResource(id = R.drawable.ic_right),
+                        contentDescription = "Right Icon"
+                    )
+                }
+
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
+
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text = "Apps & services",
+                        Modifier
+                            .padding(top = 2.dp)
+                            .align(Alignment.CenterVertically),
+                        color = Color(0xFF565858),
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.Normal,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Image(
+                        modifier = Modifier
+                            .size(20.dp)
+                            .align(Alignment.Bottom),
+                        alignment = Alignment.Center,
+                        contentScale = ContentScale.Crop,
+                        painter = painterResource(id = R.drawable.ic_right),
+                        contentDescription = "Right Icon"
+                    )
+                }
+
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
+
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text = "App info",
+                        Modifier
+                            .padding(top = 2.dp)
+                            .align(Alignment.CenterVertically),
+                        color = Color(0xFF565858),
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.Normal,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Image(
+                        modifier = Modifier
+                            .size(20.dp)
+                            .align(Alignment.Bottom),
+                        alignment = Alignment.Center,
+                        contentScale = ContentScale.Crop,
+                        painter = painterResource(id = R.drawable.ic_right),
+                        contentDescription = "Right Icon"
+                    )
+                }
+
+
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
+
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text = "Share",
+                        Modifier
+                            .padding(top = 2.dp)
+                            .align(Alignment.CenterVertically),
+                        color = Color(0xFF565858),
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.Normal,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Image(
+                        modifier = Modifier
+                            .size(20.dp)
+                            .align(Alignment.Bottom),
+                        alignment = Alignment.Center,
+                        contentScale = ContentScale.Crop,
+                        painter = painterResource(id = R.drawable.ic_right),
+                        contentDescription = "Right Icon"
+                    )
+                }
+
+                DottedLine(color = Color.Gray, dashWidth = 8f, dashGap =  5f)
+
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text = "Restore purchase",
+                        Modifier
+                            .padding(top = 2.dp)
+                            .align(Alignment.CenterVertically),
+                        color = Color(0xFF565858),
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.Normal,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Image(
+                        modifier = Modifier
+                            .size(20.dp)
+                            .align(Alignment.Bottom),
+                        alignment = Alignment.Center,
+                        contentScale = ContentScale.Crop,
+                        painter = painterResource(id = R.drawable.ic_right),
+                        contentDescription = "Right Icon"
+                    )
+                }
+
+            }
         }
 
 

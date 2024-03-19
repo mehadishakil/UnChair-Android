@@ -27,7 +27,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.composed
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.debugInspectorInfo
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 
@@ -104,6 +106,7 @@ fun TabRow(
                 .map { it.measure(constraints) }
 
             val itemsCount = tabMeasurable.size
+            val maxItemWidth = tabMeasurable.maxOf { it.width }
             val maxItemHeight = tabMeasurable.maxOf { it.height }
 
             val tabPlacables = subcompose(SubComposeID.ITEM, tabItem).map {
@@ -112,7 +115,7 @@ fun TabRow(
 
             val tabPositions = tabPlacables.mapIndexed { index, placeable ->
                 val itemWidth = (constraints.maxWidth/itemsCount).toDp()
-                val x = tabPlacables.take(index).sumOf { it.width }
+                val x = (constraints.maxWidth/itemsCount) * index
                 TabPosition(x.toDp(), itemWidth)
             }
 
@@ -130,7 +133,7 @@ fun TabRow(
                 }
 
                 tabPlacables.forEachIndexed { index, placeable ->
-                    val x = tabPlacables.take(index).sumOf { it.width }
+                    val x = (constraints.maxWidth/itemsCount) * index
                     placeable.placeRelative(x, 0)
                 }
             }
@@ -168,15 +171,23 @@ fun TabTitle(
     position: Int,
     onClick: (Int) -> Unit
 ) {
-    Text(
-        text = title,
-        Modifier
-            .wrapContentWidth(Alignment.CenterHorizontally)
-            .padding(horizontal = 8.dp, vertical = 4.dp)
+    Row(
+        modifier = Modifier
+            .width(LocalConfiguration.current.screenWidthDp.dp/3)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,
-            ) { onClick(position) },
-        color = Color.DarkGray
-    )
+                onClick = { onClick(position) }
+            ),
+    ) {
+        Text(
+            text = title,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp),
+            textAlign = TextAlign.Center,
+            color = Color.DarkGray
+        )
+    }
 }
+
