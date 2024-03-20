@@ -589,7 +589,7 @@ fun ProfileScreen() {
             fontSize = 18.sp
         )
 
-        // Essentials
+        // Theme
         Box(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 8.dp, end = 8.dp, top = 16.dp)

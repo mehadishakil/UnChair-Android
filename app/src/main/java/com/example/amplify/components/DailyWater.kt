@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -31,6 +32,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.amplify.R
+import com.example.amplify.ui.theme.BgColor
+import com.example.amplify.ui.theme.GrayColor
+import com.example.amplify.ui.theme.LightGray
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -46,11 +50,12 @@ fun DailyWaterPreview() {
 fun DailyWater(water: Float) {
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.outline
+            containerColor = BgColor
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .height(240.dp)
+            .height(180.dp),
+        shape = RoundedCornerShape(8.dp)
     ) {
         Column {
             Row(
@@ -69,7 +74,7 @@ fun DailyWater(water: Float) {
                 Text(
                     text = "Water",
                     style = MaterialTheme.typography.headlineLarge, // Use h4 for large, bold text
-                    color = Color.White,
+                    color = Color.DarkGray,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier
                         .padding(4.dp), // Adjusted padding
@@ -92,14 +97,14 @@ fun DailyWater(water: Float) {
                     Text(
                         text = "$water",
                         style = MaterialTheme.typography.displayLarge, // Use h4 for large, bold text
-                        color = Color.White,
+                        color = Color.DarkGray,
                         fontWeight = FontWeight.Bold,
                     )
 
                     Text(
                         text = "Liters",
                         style = MaterialTheme.typography.headlineLarge, // Use h4 for large, bold text
-                        color = Color.White,
+                        color = Color.DarkGray,
                         fontWeight = FontWeight.Light,
                         modifier = Modifier
                             .padding(start = 8.dp, bottom = 6.dp) // Adjusted padding
@@ -129,6 +134,8 @@ fun LinearDeterminateIndicator() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
+            color = Color.Blue,
+            trackColor = LightGray
         )
     }
 }
