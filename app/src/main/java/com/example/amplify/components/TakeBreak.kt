@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.amplify.R
 import com.example.amplify.ui.theme.GrayColor
 import com.example.amplify.ui.theme.LightGray
@@ -50,7 +51,10 @@ fun BreakCardView(
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
+            .height(80.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),
     ) {
         Column(
             modifier = Modifier
@@ -66,16 +70,16 @@ fun BreakCardView(
             ) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.headlineSmall, // Use h4 for large, bold text
+                    fontSize = 16.sp, // Use h4 for large, bold text
                     color = Color(0xFF3C3B3B),
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.SemiBold,
                     modifier = Modifier
                         .padding(4.dp), // Adjusted padding
                 )
 
                 Text(
                     text = time,
-                    style = MaterialTheme.typography.titleLarge, // Use h4 for large, bold text
+                    fontSize = 16.sp, // Use h4 for large, bold text
                     color = Color(0xFF636363),
                     fontWeight = FontWeight.Normal,
                     modifier = Modifier
@@ -84,7 +88,7 @@ fun BreakCardView(
             }
             Text(
                 text = description,
-                style = MaterialTheme.typography.bodyLarge, // Use h4 for large, bold text
+                fontSize = 14.sp, // Use h4 for large, bold text
                 color = GrayColor,
                 fontWeight = FontWeight.Normal,
                 modifier = Modifier

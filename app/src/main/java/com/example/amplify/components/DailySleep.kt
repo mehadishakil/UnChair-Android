@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.amplify.R
 
 
@@ -37,14 +38,12 @@ fun DailySleepPreview() {
 
 
 @Composable
-fun DailySleep(sleep: Float) {
+fun DailySleep(sleep: Float, modifier: Modifier = Modifier) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = Color.DarkGray
         ),
-        modifier = Modifier
-            .size(width = 240.dp, height = 260.dp)
-            .padding(horizontal = 16.dp, vertical = 24.dp), // Adjusted padding
+        modifier = modifier // Adjusted padding
     ) {
         Column {
             Card(
@@ -77,11 +76,9 @@ fun DailySleep(sleep: Float) {
             ) {
                 Text(
                     text = "Sleep",
-                    style = MaterialTheme.typography.headlineMedium, // Use h4 for large, bold text
+                    fontSize = 16.sp, // Use h4 for large, bold text
                     color = Color.White,
-                    fontWeight = FontWeight.SemiBold,
-                    modifier = Modifier
-                        .padding(4.dp), // Adjusted padding
+                    fontWeight = FontWeight.Bold, // Adjusted padding
                 )
 
                 Row(
@@ -93,18 +90,17 @@ fun DailySleep(sleep: Float) {
                 ) {
                     Text(
                         text = "$sleep",
-                        style = MaterialTheme.typography.displayMedium, // Use h4 for large, bold text
+                        fontSize = 24.sp, // Use h4 for large, bold text
                         color = Color.White,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.Bold, // Adjusted padding
                     )
 
                     Text(
                         text = "Hours",
-                        style = MaterialTheme.typography.headlineLarge, // Use h4 for large, bold text
+                        Modifier.padding(start = 8.dp, bottom = 2.dp),
+                        fontSize = 20.sp, // Use h4 for large, bold text
                         color = Color.White,
-                        fontWeight = FontWeight.Light,
-                        modifier = Modifier
-                            .padding(start = 4.dp, bottom = 4.dp) // Adjusted padding
+                        fontWeight = FontWeight.Bold, // Adjusted padding
                     )
                 }
 

@@ -31,6 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.amplify.R
 import com.example.amplify.ui.theme.BgColor
 import com.example.amplify.ui.theme.GrayColor
@@ -51,37 +52,37 @@ fun DailyWater(water: Float) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(145.dp)
-            .padding(8.dp),
+            .height(120.dp),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface,
+            containerColor = Color.DarkGray
         ),
     ) {
         Column {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp), // Adjusted padding
+                    .padding(top = 4.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_water_droplet),
+                    painter = painterResource(id = R.drawable.ic_waterdroplet),
                     contentDescription = "Steps icon", // More descriptive content description
                     modifier = Modifier
-                        .size(40.dp)
+                        .size(30.dp)
+                        .padding(start = 16.dp)
                 )
                 Text(
                     text = "Water",
-                    style = MaterialTheme.typography.titleLarge, // Use h4 for large, bold text
-                    color = Color(0xFF5DADEC),
+                    fontSize = 18.sp, // Use h4 for large, bold text
+                    color = Color.White,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier
-                        .align(Alignment.Bottom)
-                        .padding(4.dp), // Adjusted padding
+                        .align(Alignment.CenterVertically)
+                        .padding(8.dp, end = 16.dp), // Adjusted padding
                 )
             }
 
@@ -94,14 +95,14 @@ fun DailyWater(water: Float) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp), // Adjusted padding
+                        .padding(16.dp, top = 12.dp, bottom = 6.dp), // Adjusted padding
                     verticalAlignment = Alignment.Bottom,
                     horizontalArrangement = Arrangement.Start
                 ) {
                     Text(
                         text = "$water",
-                        style = MaterialTheme.typography.displaySmall, // Use h4 for large, bold text
-                        color = Color.DarkGray,
+                        fontSize = 24.sp, // Use h4 for large, bold text
+                        color = Color.White,
                         fontWeight = FontWeight.Bold,
                     )
 
@@ -109,9 +110,9 @@ fun DailyWater(water: Float) {
                         text = "Liters",
                         modifier = Modifier
                             .align(Alignment.Bottom)
-                            .padding(start = 8.dp, bottom = 6.dp),
-                        style = MaterialTheme.typography.titleLarge,
-                        color = Color.DarkGray,
+                            .padding(start = 12.dp, bottom = 4.dp),
+                        fontSize = 16.sp,
+                        color = Color.White,
                         fontWeight = FontWeight.Light,
                     )
                 }
@@ -140,7 +141,7 @@ fun LinearDeterminateIndicator() {
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
             color = Color(0xFF5DADEC),
-            trackColor = GrayColor
+            trackColor = Color.White
         )
     }
 }

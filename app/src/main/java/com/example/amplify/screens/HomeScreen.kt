@@ -30,6 +30,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -41,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import com.example.amplify.R
 import com.example.amplify.components.BreakCardView
 import com.example.amplify.components.CustomCircularProgressIndicator
+import com.example.amplify.components.DailySleep
 import com.example.amplify.components.DailySteps
 import com.example.amplify.components.DailyWater
 import com.example.amplify.components.DottedLine
@@ -63,43 +65,81 @@ fun HomeScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 10.dp)
             .verticalScroll(state = scrollState)
             .background(MaterialTheme.colorScheme.surface),
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = 65.dp)
-                .clip(RoundedCornerShape(0.dp)),
+                .heightIn(min = 60.dp)
+                .clip(shape = RectangleShape),
             elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         ) {
             HomeScreenTopBar()
         }
 
-        Box(modifier = Modifier.padding(top = 12.dp)){
+        Box(modifier = Modifier.padding(top = 12.dp)) {
             SedentaryTime()
         }
 
 
 
+
+
+
+
         Text(
-            text = "Take a Break",
-            Modifier.padding(start = 8.dp, top = 18.dp),
-            color = Color(0xFF565858),
+            text = "Daily Tracking",
+            Modifier.padding(start = 8.dp, top = 18.dp, bottom = 8.dp),
+            color = Color.Black,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
+            fontSize = 16.sp
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
+            Column {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    DailySteps(steps = 3321, modifier = Modifier.weight(1f).height(150.dp))
+
+                    Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+
+                    DailySleep(sleep = 5.6f, modifier = Modifier.weight(1f).height(150.dp))
+                }
+                DailyWater(3.4f)
+            }
+        }
+
+
+
+
+
+
+
+
+        Text(
+            text = "Take a Break",
+            Modifier.padding(start = 8.dp, top = 18.dp, bottom = 8.dp),
+            color = Color.Black,
+            fontFamily = FontFamily.SansSerif,
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp
         )
 
         // Essentials
-        Card(
+        Box(
             modifier = Modifier
-                .size(550.dp)
-                .padding(start = 8.dp, end = 8.dp, top = 16.dp),
-            colors = CardDefaults.cardColors(Color.LightGray),
-        ){
+                .size(460.dp)
+                .clip(shape = RoundedCornerShape(8.dp))
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -133,7 +173,7 @@ fun HomeScreen() {
 
                 BreakCardView(
                     title = "Coffee Break",
-                    time = "100 min",
+                    time = "10 min",
                     description = "Drink a cup of coffee"
                 )
 
@@ -142,15 +182,39 @@ fun HomeScreen() {
 
 
 
-        Box(modifier = Modifier){
-            DailyWater(3.4f)
+
+        Text(
+            text = "Calm Corner",
+            Modifier.padding(start = 8.dp, top = 18.dp, bottom = 8.dp),
+            color = Color.Black,
+            fontFamily = FontFamily.SansSerif,
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp
+        )
+
+        // Essentials
+        Box(
+            modifier = Modifier
+                .size(460.dp)
+                .clip(shape = RoundedCornerShape(2.dp))
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(8.dp),
+                verticalArrangement = Arrangement.SpaceBetween,
+                horizontalAlignment = Alignment.Start
+            ) {
+                BreakCardView(
+                    title = "Meditate",
+                    time = "",
+                    description = "5 minutes meditation"
+                )
+            }
         }
-
-
 
     }
 }
-
 
 
 @Preview(showBackground = true)
@@ -174,8 +238,8 @@ fun HomeScreenPreview() {
 //        }
 //    )
 
- //   LineChartScreen()
-  //  SleepAnalytics()
+    //   LineChartScreen()
+    //  SleepAnalytics()
     HomeScreen()
 
 }

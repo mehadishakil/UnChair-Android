@@ -57,8 +57,8 @@ fun SedentaryTime() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(140.dp)
-            .padding(8.dp),
+            .height(125.dp)
+            .padding(6.dp),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
@@ -70,7 +70,7 @@ fun SedentaryTime() {
             Row(
                 modifier = Modifier
                     .fillMaxSize(),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 // Image positioned at the start
@@ -85,8 +85,8 @@ fun SedentaryTime() {
                 Column(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .padding(start = 8.dp, end = 24.dp),
-                    verticalArrangement = Arrangement.SpaceEvenly,
+                        .padding(start = 44.dp, end = 24.dp, bottom = 4.dp),
+                    verticalArrangement = Arrangement.SpaceAround,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
@@ -95,7 +95,7 @@ fun SedentaryTime() {
                         color = Color(0xFF383A3D),
                         fontFamily = FontFamily.SansSerif,
                         fontWeight = FontWeight.SemiBold,
-                        style = MaterialTheme.typography.headlineSmall
+                        fontSize = 18.sp
                     )
                     TimeDisplay()
 
@@ -116,7 +116,7 @@ fun SedentaryTime() {
                         modifier = Modifier
                             .widthIn(100.dp)
                             .heightIn(30.dp)
-                            .padding(4.dp, bottom = 8.dp),
+                            .padding(horizontal = 6.dp),
                     ) {
                         Text("Reset")
                     }
@@ -150,7 +150,7 @@ fun TimeDisplay() {
         text = formattedTime,
         modifier = Modifier.padding(4.dp),
         style = TextStyle(
-            fontSize = MaterialTheme.typography.headlineMedium.fontSize,
+            fontSize = 20.sp,
             color = Color(0xFF004AB8),
             fontWeight = FontWeight.ExtraBold
         )

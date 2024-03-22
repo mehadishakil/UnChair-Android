@@ -1,6 +1,8 @@
 package com.example.amplify.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.amplify.R
 
 
@@ -31,47 +34,47 @@ fun DailyStepsPreview(){
 
 
 @Composable
-fun DailySteps(steps: Int) {
+fun DailySteps(steps: Int, modifier: Modifier = Modifier) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = Color.DarkGray
         ),
-        modifier = Modifier
-            .size(width = 240.dp, height = 260.dp)
-            .padding(horizontal = 16.dp, vertical = 24.dp), // Adjusted padding
+        modifier = modifier, // Adjusted padding
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 12.dp, bottom = 12.dp),
+                .fillMaxSize(),
                 // Fill the entire card area
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceEvenly
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_foot),
                 contentDescription = "Steps icon", // More descriptive content description
                 modifier = Modifier
                     .fillMaxWidth() // Occupy full width
-                    .height(80.dp) // Maintain desired image height
+                    .height(40.dp) // Maintain desired image height
                     .align(Alignment.CenterHorizontally) // Center horizontally
-                    .padding(12.dp)
+
             )
 
-            Text(
-                text = "$steps",
-                style = MaterialTheme.typography.displayLarge, // Use h4 for large, bold text
-                color = Color.White,
-                fontWeight = FontWeight.Bold, // Adjusted padding
-            )
+            Column(modifier = Modifier){
+                Text(
+                    text = "$steps",
+                    fontSize = 24.sp, // Use h4 for large, bold text
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold, // Adjusted padding
+                )
 
-            Text(
-                text = "Steps",
-                style = MaterialTheme.typography.bodyLarge, // Use body1 for clearer labels
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp) // Adjusted padding
-            )
+                Text(
+                    text = "Steps",
+                    fontSize = 14.sp, // Use body1 for clearer labels
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp) // Adjusted padding
+                )
+            }
         }
     }
 }

@@ -83,7 +83,7 @@ fun HomeScreenTopBar() {
                 modifier = Modifier
                     .fillMaxHeight()
                     .padding(start = 12.dp, end = 12.dp),
-                verticalArrangement = Arrangement.SpaceBetween,
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
@@ -92,7 +92,7 @@ fun HomeScreenTopBar() {
                     color = Color(0xFF565858),
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Normal,
-                    style = MaterialTheme.typography.bodyLarge
+                    fontSize = 14.sp
                 )
                 Text(
                     text = "Mehadi Hasan !🖐",
@@ -100,7 +100,7 @@ fun HomeScreenTopBar() {
                     color = Color(0xFF383A3D),
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 24.sp,
+                    fontSize = 16.sp,
                 )
             }
         }
