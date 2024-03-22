@@ -8,12 +8,15 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -54,20 +57,20 @@ fun SedentaryTime() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(170.dp)
+            .height(140.dp)
             .padding(8.dp),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            containerColor = MaterialTheme.colorScheme.surface,
         ),
 
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxSize(),
-                horizontalArrangement = Arrangement.SpaceAround,
+                horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 // Image positioned at the start
@@ -82,32 +85,43 @@ fun SedentaryTime() {
                 Column(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .padding(start = 8.dp),
+                        .padding(start = 8.dp, end = 24.dp),
                     verticalArrangement = Arrangement.SpaceEvenly,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = "Sedentary Time",
+                        modifier = Modifier.padding(4.dp),
                         color = Color(0xFF383A3D),
                         fontFamily = FontFamily.SansSerif,
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.headlineMedium
+                        fontWeight = FontWeight.SemiBold,
+                        style = MaterialTheme.typography.headlineSmall
                     )
                     TimeDisplay()
 
-                    Button(
+//                    Button(
+//                        onClick = { /*TODO*/ },
+//                        modifier = Modifier
+//                            .width(120.dp)
+//                            .padding(),
+//                    ) {
+//                        Text(
+//                            text = "Reset",
+//                            color = Color.White, // Change to a contrasting color
+//                            modifier = Modifier.padding(),
+//                        )
+//                    }
+                    FilledTonalButton(
                         onClick = { /*TODO*/ },
                         modifier = Modifier
-                            .width(120.dp)
-                            .padding(),
+                            .widthIn(100.dp)
+                            .heightIn(30.dp)
+                            .padding(4.dp, bottom = 8.dp),
                     ) {
-                        Text(
-                            text = "Reset",
-                            color = Color.White, // Change to a contrasting color
-                            modifier = Modifier.padding(),
-                        )
+                        Text("Reset")
                     }
                 }
+
             }
     }
 }
@@ -134,11 +148,11 @@ fun TimeDisplay() {
 
     Text(
         text = formattedTime,
-        modifier = Modifier.padding(),
+        modifier = Modifier.padding(4.dp),
         style = TextStyle(
-            fontSize = MaterialTheme.typography.headlineSmall.fontSize,
+            fontSize = MaterialTheme.typography.headlineMedium.fontSize,
             color = Color(0xFF004AB8),
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.ExtraBold
         )
     )
 }

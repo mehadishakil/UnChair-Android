@@ -33,6 +33,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import com.example.amplify.components.DottedLine
 import com.example.amplify.components.ThemeTabBar
@@ -75,7 +77,7 @@ fun ProfileScreen() {
             color = Color(0xFFDF6147),
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.SemiBold,
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyLarge,
         )
 
         // Profile

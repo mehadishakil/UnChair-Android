@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.amplify.R
@@ -54,7 +55,7 @@ fun BreakCardView(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp), // Adjusted padding
+                .padding(6.dp), // Adjusted padding
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             Row(
@@ -76,7 +77,7 @@ fun BreakCardView(
                     text = time,
                     style = MaterialTheme.typography.titleLarge, // Use h4 for large, bold text
                     color = Color(0xFF636363),
-                    fontWeight = FontWeight.SemiBold,
+                    fontWeight = FontWeight.Normal,
                     modifier = Modifier
                         .padding(4.dp), // Adjusted padding
                 )
@@ -88,6 +89,8 @@ fun BreakCardView(
                 fontWeight = FontWeight.Normal,
                 modifier = Modifier
                     .padding(4.dp), // Adjusted padding
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
 
         }

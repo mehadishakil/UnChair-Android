@@ -29,7 +29,7 @@ fun CalendarAppPreview() {
 
 @Composable
 fun CalendarView(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.fillMaxWidth(),
 ) {
     val dataSource = CalendarDataSource()
     var data by remember { mutableStateOf(dataSource.getData(lastSelectedDate = dataSource.today)) }
@@ -103,7 +103,7 @@ fun Content(
     data: CalendarUiModel,
     onDateClickListener: (CalendarUiModel.Date) -> Unit,
 ) {
-    LazyVerticalGrid(columns = GridCells.Adaptive(minSize = 48.dp)) {
+    LazyVerticalGrid(columns = GridCells.Fixed(7)) {
         items(data.visibleDates.size) { index ->
             ContentItem(
                 date = data.visibleDates[index],

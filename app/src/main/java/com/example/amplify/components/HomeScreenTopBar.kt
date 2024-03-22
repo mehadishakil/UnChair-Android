@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import com.example.amplify.R
 import com.example.amplify.components.sleepAnalytics.BarGraph
@@ -52,9 +53,9 @@ fun HomeScreenTopBar() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(50.dp, 60.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-            ,
+            .heightIn(min = 64.dp, max = 64.dp)
+            .padding(4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
 
         Row {

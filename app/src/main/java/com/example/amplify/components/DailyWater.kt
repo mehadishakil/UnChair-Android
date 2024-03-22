@@ -49,13 +49,16 @@ fun DailyWaterPreview() {
 @Composable
 fun DailyWater(water: Float) {
     Card(
-        colors = CardDefaults.cardColors(
-            containerColor = BgColor
-        ),
         modifier = Modifier
             .fillMaxWidth()
-            .height(180.dp),
-        shape = RoundedCornerShape(8.dp)
+            .height(145.dp)
+            .padding(8.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface,
+        ),
     ) {
         Column {
             Row(
@@ -69,14 +72,15 @@ fun DailyWater(water: Float) {
                     painter = painterResource(id = R.drawable.ic_water_droplet),
                     contentDescription = "Steps icon", // More descriptive content description
                     modifier = Modifier
-                        .size(50.dp)
+                        .size(40.dp)
                 )
                 Text(
                     text = "Water",
-                    style = MaterialTheme.typography.headlineLarge, // Use h4 for large, bold text
-                    color = Color.DarkGray,
+                    style = MaterialTheme.typography.titleLarge, // Use h4 for large, bold text
+                    color = Color(0xFF5DADEC),
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier
+                        .align(Alignment.Bottom)
                         .padding(4.dp), // Adjusted padding
                 )
             }
@@ -96,18 +100,19 @@ fun DailyWater(water: Float) {
                 ) {
                     Text(
                         text = "$water",
-                        style = MaterialTheme.typography.displayLarge, // Use h4 for large, bold text
+                        style = MaterialTheme.typography.displaySmall, // Use h4 for large, bold text
                         color = Color.DarkGray,
                         fontWeight = FontWeight.Bold,
                     )
 
                     Text(
                         text = "Liters",
-                        style = MaterialTheme.typography.headlineLarge, // Use h4 for large, bold text
+                        modifier = Modifier
+                            .align(Alignment.Bottom)
+                            .padding(start = 8.dp, bottom = 6.dp),
+                        style = MaterialTheme.typography.titleLarge,
                         color = Color.DarkGray,
                         fontWeight = FontWeight.Light,
-                        modifier = Modifier
-                            .padding(start = 8.dp, bottom = 6.dp) // Adjusted padding
                     )
                 }
                 LinearDeterminateIndicator()
@@ -125,7 +130,7 @@ fun LinearDeterminateIndicator() {
     val scope = rememberCoroutineScope() // Create a coroutine scope
 
     Column(
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -133,17 +138,19 @@ fun LinearDeterminateIndicator() {
             progress = currentProgress,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            color = Color.Blue,
-            trackColor = LightGray
+                .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+            color = Color(0xFF5DADEC),
+            trackColor = GrayColor
         )
     }
 }
 
 /** Iterate the progress value */
 suspend fun loadProgress(updateProgress: (Float) -> Unit) {
-    for (i in 1..100) {
-        updateProgress(i.toFloat() / 100)
-        delay(100)
-    }
+//    for (i in 1..100) {
+//        updateProgress(i.toFloat() / 100)
+//        delay(100)
+//    }
+
+    updateProgress(20f)
 }
