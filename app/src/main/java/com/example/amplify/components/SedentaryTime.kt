@@ -57,7 +57,7 @@ fun SedentaryTime() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(125.dp)
+            .height(130.dp)
             .padding(6.dp),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -67,37 +67,37 @@ fun SedentaryTime() {
         ),
 
         ) {
-            Row(
+        Row(
+            modifier = Modifier
+                .fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Image positioned at the start
+            Image(
                 modifier = Modifier
-                    .fillMaxSize(),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(24.dp)
+                    .fillMaxHeight(),
+                contentScale = ContentScale.Crop,
+                painter = painterResource(id = R.drawable.ic_hourglass),
+                contentDescription = "Hourglass Icon"
+            )
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(start = 44.dp, end = 24.dp, bottom = 4.dp),
+                verticalArrangement = Arrangement.SpaceAround,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Image positioned at the start
-                Image(
-                    modifier = Modifier
-                        .padding(24.dp)
-                        .fillMaxHeight(),
-                    contentScale = ContentScale.Crop,
-                    painter = painterResource(id = R.drawable.ic_hourglass),
-                    contentDescription = "Hourglass Icon"
+                Text(
+                    text = "Sedentary Time",
+                    modifier = Modifier.padding(4.dp),
+                    color = Color(0xFF383A3D),
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp
                 )
-                Column(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .padding(start = 44.dp, end = 24.dp, bottom = 4.dp),
-                    verticalArrangement = Arrangement.SpaceAround,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Sedentary Time",
-                        modifier = Modifier.padding(4.dp),
-                        color = Color(0xFF383A3D),
-                        fontFamily = FontFamily.SansSerif,
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 18.sp
-                    )
-                    TimeDisplay()
+                TimeDisplay()
 
 //                    Button(
 //                        onClick = { /*TODO*/ },
@@ -111,18 +111,18 @@ fun SedentaryTime() {
 //                            modifier = Modifier.padding(),
 //                        )
 //                    }
-                    FilledTonalButton(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .widthIn(100.dp)
-                            .heightIn(30.dp)
-                            .padding(horizontal = 6.dp),
-                    ) {
-                        Text("Reset")
-                    }
+                FilledTonalButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .widthIn(100.dp)
+                        .heightIn(30.dp)
+                        .padding(start = 6.dp, end = 6.dp, bottom = 6.dp),
+                ) {
+                    Text("Reset")
                 }
-
             }
+
+        }
     }
 }
 

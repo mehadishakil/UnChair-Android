@@ -44,7 +44,7 @@ fun DailySteps(steps: Int, modifier: Modifier = Modifier) {
         Column(
             modifier = Modifier
                 .fillMaxSize(),
-                // Fill the entire card area
+            // Fill the entire card area
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
@@ -58,7 +58,7 @@ fun DailySteps(steps: Int, modifier: Modifier = Modifier) {
 
             )
 
-            Column(modifier = Modifier){
+            Column(modifier = Modifier.align(Alignment.CenterHorizontally)){
                 Text(
                     text = "$steps",
                     fontSize = 24.sp, // Use h4 for large, bold text
@@ -71,8 +71,7 @@ fun DailySteps(steps: Int, modifier: Modifier = Modifier) {
                     fontSize = 14.sp, // Use body1 for clearer labels
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp) // Adjusted padding
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
             }
         }

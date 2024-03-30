@@ -52,8 +52,8 @@ fun MainScreen() {
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(
         BottomBarScreen.Home,
-        BottomBarScreen.Profile,
         BottomBarScreen.Analytics,
+        BottomBarScreen.Profile,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -92,7 +92,7 @@ fun AddItem(
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
 
     val contentColor =
-        if (selected) Color.White else Color.Blue
+        if (selected) Color.Blue else Color.Black
 
     val interactionSource = remember { MutableInteractionSource() }
 
@@ -112,7 +112,7 @@ fun AddItem(
         Column(
             modifier = Modifier
                 .padding(start = 12.dp, end = 12.dp, top = 8.dp, bottom = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
+            verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
@@ -132,7 +132,7 @@ fun AddItem(
             }
 
             Text(
-                text = stringResource(id = screen.route.toInt()),
+                text = screen.route.toString(),
                 color = contentColor,
                 fontWeight = FontWeight.Medium,
             )
