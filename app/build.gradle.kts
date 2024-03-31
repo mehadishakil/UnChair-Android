@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -71,11 +73,25 @@ dependencies {
     implementation ("androidx.compose.material:material-icons-extended:1.6.4")
 
 
-//    //dependency for the navigation.
-//    implementation(libs.androidx.navigation.compose)
-
     // YChart
     implementation(libs.ycharts)
+
+
+    // Arrow
+    implementation("io.arrow-kt:arrow-core:1.2.1")
+    implementation("io.arrow-kt:arrow-fx-coroutines:1.2.1")
+
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Coil
+    implementation ("io.coil-kt:coil-compose:2.5.0")
+
+    // dagger hilt
+    implementation ("com.google.dagger:hilt-android:2.44")
+    kapt ("com.google.dagger:hilt-android-compiler:2.44")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
 
 
 

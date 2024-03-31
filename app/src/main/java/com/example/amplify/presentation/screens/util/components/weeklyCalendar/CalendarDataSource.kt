@@ -1,4 +1,4 @@
-package com.example.amplify.components.weeklyCalendar
+package com.example.amplify.presentation.screens.util.components.weeklyCalendar
 
 import java.time.DayOfWeek
 import java.time.LocalDate

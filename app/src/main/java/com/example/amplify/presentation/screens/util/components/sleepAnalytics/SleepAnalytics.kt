@@ -1,4 +1,4 @@
-package com.example.amplify.components.sleepAnalytics
+package com.example.amplify.presentation.screens.util.components.sleepAnalytics
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

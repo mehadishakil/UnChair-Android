@@ -1,4 +1,4 @@
-package com.example.amplify.components
+package com.example.amplify.presentation.screens.util.components
 
 import android.graphics.Paint
 import androidx.compose.foundation.Canvas

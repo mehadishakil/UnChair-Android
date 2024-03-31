@@ -1,4 +1,4 @@
-package com.example.amplify.components
+package com.example.amplify.presentation.screens.util.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -35,8 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import com.example.amplify.R
-import com.example.amplify.components.sleepAnalytics.BarGraph
-import com.example.amplify.components.sleepAnalytics.BarType
+import com.example.amplify.presentation.screens.util.components.sleepAnalytics.BarGraph
+import com.example.amplify.presentation.screens.util.components.sleepAnalytics.BarType
 
 
 

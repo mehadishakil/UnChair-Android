@@ -1,4 +1,4 @@
-package com.example.amplify.components
+package com.example.amplify.presentation.screens.util.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height

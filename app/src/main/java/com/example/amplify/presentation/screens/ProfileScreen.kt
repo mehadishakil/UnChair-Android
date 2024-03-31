@@ -1,4 +1,4 @@
-package com.example.amplify.screens
+package com.example.amplify.presentation.screens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -36,8 +36,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
-import com.example.amplify.components.DottedLine
-import com.example.amplify.components.ThemeTabBar
+import com.example.amplify.presentation.screens.util.components.DottedLine
+import com.example.amplify.presentation.screens.util.components.ThemeTabBar
 
 
 @Preview(showBackground = true)

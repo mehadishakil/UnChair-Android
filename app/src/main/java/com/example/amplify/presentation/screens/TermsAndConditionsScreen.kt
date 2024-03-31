@@ -1,4 +1,4 @@
-package com.example.amplify.screens
+package com.example.amplify.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
