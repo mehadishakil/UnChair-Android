@@ -1,4 +1,4 @@
-package com.example.amplify.presentation.screens.util.components.weeklyCalendar
+package com.example.amplify.presentation.util.components.weeklyCalendar
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow

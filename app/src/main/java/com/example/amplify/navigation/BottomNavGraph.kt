@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.amplify.presentation.screens.ProfileScreen
-import com.example.amplify.ui.theme.AnalyticsScreen
+import com.example.amplify.presentation.screens.AnalyticsScreen
 import com.example.loginsignup_jetpackcompose.screens.HomeScreen
 
 @Composable

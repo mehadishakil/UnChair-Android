@@ -36,8 +36,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
-import com.example.amplify.presentation.screens.util.components.DottedLine
-import com.example.amplify.presentation.screens.util.components.ThemeTabBar
+import com.example.amplify.presentation.util.components.DottedLine
+import com.example.amplify.presentation.util.components.ThemeTabBar
 
 
 @Preview(showBackground = true)
@@ -53,8 +53,8 @@ fun ProfileScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 10.dp)
             .verticalScroll(state = scrollState)
+            .padding(top = 10.dp)
     ) {
         val borderWidth = 4.dp
         Image(

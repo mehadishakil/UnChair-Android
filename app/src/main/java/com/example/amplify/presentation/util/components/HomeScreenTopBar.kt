@@ -1,4 +1,4 @@
-package com.example.amplify.presentation.screens.util.components
+package com.example.amplify.presentation.util.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -35,8 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
 import com.example.amplify.R
-import com.example.amplify.presentation.screens.util.components.sleepAnalytics.BarGraph
-import com.example.amplify.presentation.screens.util.components.sleepAnalytics.BarType
+import com.example.amplify.presentation.util.components.sleepAnalytics.BarGraph
+import com.example.amplify.presentation.util.components.sleepAnalytics.BarType
 
 
 
@@ -105,24 +105,24 @@ fun HomeScreenTopBar() {
             }
         }
 
-//        Image(
-//            modifier = Modifier
-//                .size(40.dp)
-//                .padding(start = 10.dp,  top = 10.dp, bottom = 2.dp, end = 2.dp)
-//                .align(Alignment.Bottom),
-//            alignment = Alignment.Center,
-//            contentScale = ContentScale.Crop,
-//            painter = painterResource(id = R.drawable.ic_notification),
-//            contentDescription = "Sleepy Icon"
-//        )
-
-        IconButton(
-            onClick = { /*TODO*/ },
+        Image(
             modifier = Modifier
+                .size(40.dp)
+                .padding(start = 10.dp,  top = 10.dp, bottom = 2.dp, end = 2.dp)
                 .align(Alignment.Bottom),
-        ) {
-            Icon(Icons.Outlined.Notifications, contentDescription = "Notification Icon")
-        }
+            alignment = Alignment.Center,
+            contentScale = ContentScale.Crop,
+            painter = painterResource(id = R.drawable.ic_crown),
+            contentDescription = "Sleepy Icon"
+        )
+
+//        IconButton(
+//            onClick = { /*TODO*/ },
+//            modifier = Modifier
+//                .align(Alignment.Bottom),
+//        ) {
+//            Icon(Icons.Outlined.Notifications, contentDescription = "Notification Icon")
+//        }
 
     }
 

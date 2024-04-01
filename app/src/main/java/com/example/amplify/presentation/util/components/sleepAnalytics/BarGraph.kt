@@ -1,4 +1,4 @@
-package com.example.amplify.presentation.screens.util.components.sleepAnalytics
+package com.example.amplify.presentation.util.components.sleepAnalytics
 
 import android.graphics.Paint
 import androidx.compose.animation.core.animateFloatAsState
