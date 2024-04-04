@@ -108,7 +108,7 @@ fun HomeScreenTopBar() {
         Image(
             modifier = Modifier
                 .size(40.dp)
-                .padding(start = 10.dp,  top = 10.dp, bottom = 2.dp, end = 2.dp)
+                .padding(start = 10.dp,  top = 10.dp, bottom = 10.dp, end = 4.dp)
                 .align(Alignment.Bottom),
             alignment = Alignment.Center,
             contentScale = ContentScale.Crop,
