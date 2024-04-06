@@ -13,4 +13,4 @@ High risk: Sitting for 8-11 hours per day.
 Very high risk: Sitting for more than 11 hours per day.
 
 ## wireframe
-![wareframe](https://github.com/mehadishakil/Amplify/assets/112794443/a27dcde2-01e6-4138-bf8c-27ce1fbe35e3)
+![wireframe](https://github.com/mehadishakil/Amplify/assets/112794443/25a1f553-7226-41bd-a5c5-494286efbc40)
