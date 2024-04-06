@@ -11,3 +11,6 @@ According to WHO, Sedentary lifestyles increase all causes of mortality, double 
 Low risk: Sitting for less than 4 hours per day. Medium risk: Sitting for 4-8 hours per day.
 High risk: Sitting for 8-11 hours per day.
 Very high risk: Sitting for more than 11 hours per day.
+
+## wireframe
+![wareframe](https://github.com/mehadishakil/Amplify/assets/112794443/a27dcde2-01e6-4138-bf8c-27ce1fbe35e3)
