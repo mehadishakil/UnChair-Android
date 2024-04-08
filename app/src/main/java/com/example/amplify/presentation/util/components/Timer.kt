@@ -1,10 +1,16 @@
 package com.example.amplify.presentation.util.components
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -41,14 +47,12 @@ fun TimerPreview() {
             contentAlignment = Alignment.Center
         ) {
             // call the function Timer
-            // and pass the values
-            // it is defined below.
             Timer(
                 totalTime = 100L * 1000L,
-                handleColor = Color.Green,
+                handleColor = Color(0xFF4CABF7),
                 inactiveBarColor = Color.DarkGray,
-                activeBarColor = Color(0xFF37B900),
-                modifier = Modifier.size(200.dp)
+                activeBarColor = Color(0xFF2196F3),
+                modifier = Modifier.size(220.dp)
             )
         }
     }
@@ -138,7 +142,7 @@ fun Timer(
             )
             // calculate the value from arc pointer position
             val center = Offset(size.width / 2f, size.height / 2f)
-            val beta = (250f * value + 145f) * (PI / 180f).toFloat()
+            val beta = (250f * value - 215f) * (PI / 180f).toFloat()
             val r = size.width / 2f
             val a = cos(beta) * r
             val b = sin(beta) * r
@@ -158,24 +162,52 @@ fun Timer(
             fontWeight = FontWeight.Bold,
             color = Color.Black
         )
-        // create button to start or stop the timer
-        Button(
-            onClick = {
-                if(currentTime <= 0L) {
-                    currentTime = totalTime
-                    isTimerRunning = true
-                } else {
-                    isTimerRunning = !isTimerRunning
-                }
-            },
-            modifier = Modifier.align(Alignment.BottomCenter),
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(top = 70.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Text(
-                // change the text of button based on values
-                text = if (isTimerRunning && currentTime >= 0L) "Stop"
-                else if (!isTimerRunning && currentTime >= 0L) "Start"
-                else "Restart"
-            )
+
+            // create button to add 20 more seconds
+            Button(
+                onClick = {
+                    val newTime = currentTime + 20000 // Increase currentTime by 20 seconds (20000 milliseconds)
+                    currentTime = newTime.coerceAtMost(totalTime) // Ensure currentTime does not exceed totalTime
+                },
+                modifier = Modifier.align(Alignment.Bottom),
+                colors = ButtonDefaults.buttonColors(Color(0xFF2191E9))
+            ) {
+                Text(
+                    // change the text of button based on values
+                    text = "+20s"
+                )
+            }
+
+
+            // create button to start or stop the timer
+            Button(
+                onClick = {
+                    if(currentTime <= 0L) {
+                        currentTime = totalTime
+                        isTimerRunning = true
+                    } else {
+                        isTimerRunning = !isTimerRunning
+                    }
+                },
+                modifier = Modifier.align(Alignment.Bottom),
+                colors = ButtonDefaults.buttonColors(Color(0xFF2191E9))
+            ) {
+                Text(
+                    // change the text of button based on values
+                    text = if (isTimerRunning && currentTime >= 0L) "Pause"
+                    else if (!isTimerRunning && currentTime >= 0L) "Start"
+                    else "Restart"
+                )
+            }
         }
+
     }
 }
