@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -22,9 +23,9 @@ import androidx.compose.ui.unit.dp
 fun ExerciseCard(name: String, description: String, image: Int) {
     Card(
         modifier = Modifier
-            .padding(10.dp)
             .fillMaxWidth()
-            .wrapContentHeight(),
+            .wrapContentHeight()
+            .padding(8.dp),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface,),
@@ -42,8 +43,8 @@ fun ExerciseCard(name: String, description: String, image: Int) {
             Column(Modifier.padding(8.dp)) {
                 Text(
                     text = name,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.surface,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.Black,
                 )
                 Text(
                     text = description,

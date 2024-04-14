@@ -61,7 +61,7 @@ fun ImageCard(
 
     Card(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(bottomStart = 15.dp, bottomEnd = 15.dp),
+        shape = RoundedCornerShape(bottomStart = 0.dp, bottomEnd = 0.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
     ) {
         Box(modifier = Modifier.height(200.dp)) {
